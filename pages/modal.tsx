@@ -54,8 +54,8 @@ function Modals({ isOpen, onClose, onOpen }) {
   const date = new Date().toLocaleDateString()?.split("/").reverse().join("-");
 
 	const [type, setType] = useState("credit");
-	const [amount, setAmount] = useState(100);
-  const [detail, setDetail] = useState('');
+	const [amount, setAmount] = useState<any>(100);
+  const [detail, setDetail] = useState<any>('');
   const [err, setErr] = useState({empty:false,error:false})
   const [loading, setLoading] = useState(false)
   const [day, setDay] = useState(date)

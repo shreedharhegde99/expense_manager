@@ -1,5 +1,7 @@
 import axios from "axios";
-let baseUrl = "http://localhost:3000/api";
+let baseUrl = "https://expense-manager-snh.herokuapp.com/api";
+// let baseUrl = "http://localhost:3000/api";
+
 
 // Register the user
 
