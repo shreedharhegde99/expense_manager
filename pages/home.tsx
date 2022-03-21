@@ -19,7 +19,7 @@ import { BiBorderRadius } from "react-icons/bi";
 import { IoMdAdd } from "react-icons/io";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { Header } from ".";
-import { Modals } from "./modal";
+import Modals from "./modal";
 import DataContext from "../store/context";
 import { FetchUserData } from "../network/networkRequests";
 

@@ -167,4 +167,4 @@ function Modals({ isOpen, onClose, onOpen }) {
 	);
 }
 
-export { Modals };
+export default Modals ;
