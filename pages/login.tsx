@@ -114,7 +114,7 @@ export default function Login() {
 							</Box>
 
 							<InputGroup>
-								<InputLeftAddon children={"Username"} />
+								<InputLeftAddon>Username</InputLeftAddon>
 								<Input
 									type="text"
 									size={"md"}
@@ -127,7 +127,7 @@ export default function Login() {
 								/>
 							</InputGroup>
 							<InputGroup>
-								<InputLeftAddon children={"Password"} />
+								<InputLeftAddon>Password</InputLeftAddon>
 								<Input
 									type="password"
 									size={"md"}
@@ -136,7 +136,7 @@ export default function Login() {
 									onChange={(e) => handleChange("password", e.target.value)}
 								/>
 							</InputGroup>
-						
+
 							{err && PropmptUser("something is wrong.!")}
 							<Box w="100%">
 								<Button
@@ -155,7 +155,7 @@ export default function Login() {
 					<Center p="2" fontWeight={"bold"} color="white.800">
 						<Text>Not Registered?</Text>
 
-						<Link href="/register">
+						<Link passHref href="/register">
 							<Text cursor={"pointer"}>Register here</Text>
 						</Link>
 					</Center>

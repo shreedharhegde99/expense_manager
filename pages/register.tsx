@@ -115,7 +115,7 @@ const Register: React.FunctionComponent = () => {
 						<VStack spacing={"6"}>
 							<Stack direction={["column", "column", "row"]} spacing={"6"}>
 								<InputGroup size={"lg"}>
-									<InputLeftAddon children="First Name" />
+									<InputLeftAddon>First Name</InputLeftAddon>
 									<Input
 										type="text"
 										color={"pink.600"}
@@ -125,7 +125,7 @@ const Register: React.FunctionComponent = () => {
 									/>
 								</InputGroup>
 								<InputGroup size={"lg"}>
-									<InputLeftAddon children="Last Name" />
+									<InputLeftAddon>Last Name</InputLeftAddon>
 									<Input
 										type="text"
 										color={"pink.600"}
@@ -135,7 +135,8 @@ const Register: React.FunctionComponent = () => {
 								</InputGroup>
 							</Stack>
 							<InputGroup size={"lg"}>
-								<InputLeftAddon children="Username" />
+								<InputLeftAddon>Username</InputLeftAddon>
+
 								<Input
 									type="test"
 									color={"pink.600"}
@@ -149,7 +150,7 @@ const Register: React.FunctionComponent = () => {
 								/>
 							</InputGroup>
 							<InputGroup size={"lg"}>
-								<InputLeftAddon children="Password" />
+								<InputLeftAddon>Password</InputLeftAddon>
 								<Input
 									type="password"
 									color={"pink.600"}
@@ -165,8 +166,8 @@ const Register: React.FunctionComponent = () => {
 								type="submit"
 								variant={"solid"}
 								colorScheme="messenger"
-                isLoading={loading}
-                loadingText='Registering...'
+								isLoading={loading}
+								loadingText="Registering..."
 								// spinner={<BeatLoader size={8} color="white" />}
 							>
 								REGISTER

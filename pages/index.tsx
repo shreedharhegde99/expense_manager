@@ -5,9 +5,9 @@ import { BsLinkedin, BsTwitter, BsYoutube } from "react-icons/bs";
 import { FaRegCopyright } from "react-icons/fa";
 
 let icons = [
-	<BsLinkedin size="1.5rem" />,
-	<BsTwitter size="1.5rem" />,
-	<BsYoutube size="1.5rem" />,
+	<BsLinkedin size="1.5rem" key={'a'} />,
+	<BsTwitter size="1.5rem" key={'b'} />,
+	<BsYoutube size="1.5rem" key={'c'} />,
 ];
 
 export default function GeneralHome() {
