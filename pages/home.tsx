@@ -13,6 +13,7 @@ import {
   
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import  "../styles/homepage.module.css";
 import { Fragment, useEffect, useState, useContext } from "react";
 import { BiBorderRadius } from "react-icons/bi";
 import { IoMdAdd } from "react-icons/io";
@@ -56,10 +57,7 @@ export default function Home() {
 	return (
 		<Fragment>
 			<Head>
-				<style>
-					@import
-					url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
-				</style>
+			<title>Expense Manager </title>
 			</Head>
 			<Box position={"sticky"} top="0" zIndex={100}>
 				<Header />
