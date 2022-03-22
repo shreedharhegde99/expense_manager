@@ -12,9 +12,10 @@ import {
   Alert,
   AlertIcon,
 } from "@chakra-ui/react";
+import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useContext, useEffect, useState } from "react";
+import React, { Fragment, useContext, useEffect, useState } from "react";
 import { BiUserPlus } from "react-icons/bi";
 import { RegisterUser } from "../network/networkRequests";
 import DataContext from "../store/context";
@@ -93,109 +94,112 @@ const Register: React.FunctionComponent = () => {
 		}
 	}, [isRegistered]);
 
-	return (
-		<Center
-			h="100vh"
-			bgImage={"/money-manage.jpg"}
-			bgSize="cover"
-			bgPos={"center"}
-		>
-			<Box
-				h={["100vh", "90vh", "80vh"]}
-				maxW={"700px"}
-				backdropFilter={"blur(11px)"}
-				p="5"
-				borderRadius={"1rem"}
+  return (
+    <Fragment>
+      <Head><title>Moneyfi Register</title></Head>
+			<Center
+				h="100vh"
+				bgImage={"/money-manage.jpg"}
+				bgSize="cover"
+				bgPos={"center"}
 			>
-				<VStack w={["100%", "100%", "unset"]}>
-					<Box>
-						<BiUserPlus size={"4rem"} color="rgb(0 148 255)" />
-					</Box>
-					<form onSubmit={handleSubmit}>
-						<VStack spacing={"6"}>
-							<Stack direction={["column", "column", "row"]} spacing={"6"}>
+				<Box
+					h={["100vh", "90vh", "80vh"]}
+					maxW={"700px"}
+					backdropFilter={"blur(11px)"}
+					p="5"
+					borderRadius={"1rem"}
+				>
+					<VStack w={["100%", "100%", "unset"]}>
+						<Box>
+							<BiUserPlus size={"4rem"} color="rgb(0 148 255)" />
+						</Box>
+						<form onSubmit={handleSubmit}>
+							<VStack spacing={"6"}>
+								<Stack direction={["column", "column", "row"]} spacing={"6"}>
+									<InputGroup size={"lg"}>
+										<InputLeftAddon>First Name</InputLeftAddon>
+										<Input
+											type="text"
+											color={"pink.600"}
+											required={true}
+											value={fName}
+											onChange={(e) => handleChange("fName", e.target.value)}
+										/>
+									</InputGroup>
+									<InputGroup size={"lg"}>
+										<InputLeftAddon>Last Name</InputLeftAddon>
+										<Input
+											type="text"
+											color={"pink.600"}
+											value={lName}
+											onChange={(e) => handleChange("lName", e.target.value)}
+										/>
+									</InputGroup>
+								</Stack>
 								<InputGroup size={"lg"}>
-									<InputLeftAddon>First Name</InputLeftAddon>
+									<InputLeftAddon>Username</InputLeftAddon>
+
 									<Input
-										type="text"
+										type="test"
 										color={"pink.600"}
-										required={true}
-										value={fName}
-										onChange={(e) => handleChange("fName", e.target.value)}
+										textTransform="lowercase"
+										minLength={5}
+										maxLength={12}
+										value={user}
+										onChange={(e) =>
+											handleChange("user", e.target.value.toLowerCase())
+										}
 									/>
 								</InputGroup>
 								<InputGroup size={"lg"}>
-									<InputLeftAddon>Last Name</InputLeftAddon>
+									<InputLeftAddon>Password</InputLeftAddon>
 									<Input
-										type="text"
+										type="password"
 										color={"pink.600"}
-										value={lName}
-										onChange={(e) => handleChange("lName", e.target.value)}
+										minLength={5}
+										maxLength={12}
+										value={password}
+										onChange={(e) => handleChange("password", e.target.value)}
 									/>
 								</InputGroup>
-							</Stack>
-							<InputGroup size={"lg"}>
-								<InputLeftAddon>Username</InputLeftAddon>
 
-								<Input
-									type="test"
-									color={"pink.600"}
-									textTransform="lowercase"
-									minLength={5}
-									maxLength={12}
-									value={user}
-									onChange={(e) =>
-										handleChange("user", e.target.value.toLowerCase())
-									}
-								/>
-							</InputGroup>
-							<InputGroup size={"lg"}>
-								<InputLeftAddon>Password</InputLeftAddon>
-								<Input
-									type="password"
-									color={"pink.600"}
-									minLength={5}
-									maxLength={12}
-									value={password}
-									onChange={(e) => handleChange("password", e.target.value)}
-								/>
-							</InputGroup>
+								<Button
+									width={"100%"}
+									type="submit"
+									variant={"solid"}
+									colorScheme="messenger"
+									isLoading={loading}
+									loadingText="Registering..."
+									// spinner={<BeatLoader size={8} color="white" />}
+								>
+									REGISTER
+								</Button>
+							</VStack>
+						</form>
+					</VStack>
 
-							<Button
-								width={"100%"}
-								type="submit"
-								variant={"solid"}
-								colorScheme="messenger"
-								isLoading={loading}
-								loadingText="Registering..."
-								// spinner={<BeatLoader size={8} color="white" />}
-							>
-								REGISTER
-							</Button>
-						</VStack>
-					</form>
-				</VStack>
-
-				<Center p="2rem" pt="1rem">
-					<Text fontWeight={"bold"} color={"black.600"}>
-						Already registered?
-						<Link href="/login">Login here</Link>
-					</Text>
-				</Center>
-				{err && (
-					<Alert status="error" variant={"left-accent"}>
-						<AlertIcon />
-						There was an error processing your request
-					</Alert>
-				)}
-				{success && (
-					<Alert status="success">
-						<AlertIcon />
-						Registration successful.....!
-					</Alert>
-				)}
-			</Box>
-		</Center>
+					<Center p="2rem" pt="1rem">
+						<Text fontWeight={"bold"} color={"black.600"}>
+							Already registered?
+							<Link href="/login">Login here</Link>
+						</Text>
+					</Center>
+					{err && (
+						<Alert status="error" variant={"left-accent"}>
+							<AlertIcon />
+							There was an error processing your request
+						</Alert>
+					)}
+					{success && (
+						<Alert status="success">
+							<AlertIcon />
+							Registration successful.....!
+						</Alert>
+					)}
+				</Box>
+			</Center>
+		</Fragment>
 	);
 };
 

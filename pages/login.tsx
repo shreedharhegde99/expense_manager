@@ -11,11 +11,12 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { BsFillPersonFill } from "react-icons/bs";
 import { LoginUser } from "../network/networkRequests";
 import { useContext } from "react";
 import DataContext from "../store/context";
+import Head from "next/head";
 
 export default function Login() {
 	const [userName, setUsername] = useState("");
@@ -88,80 +89,83 @@ export default function Login() {
 		}
 	}, [isLogged]);
 
-	return (
-		<Box>
-			<Center
-				h="100vh"
-				bgImage={"/loginbg.jpg"}
-				bgSize={["cover", "cover", ""]}
-				bgPosition={["center", "center", "top"]}
-			>
-				<Box
-					border={["none", "solid 1px gray.100"]}
-					borderRadius="1.8rem"
-					p="5"
-					pt="8"
-					pb="8"
-					w={["100vw", "100vw", "600px"]}
-					// bg='cyan.500'
-					opacity={"0.9"}
-					backdropFilter="blur(10px)"
+  return (
+    <Fragment>
+      <Head><title> Moneyfi Login</title></Head>
+			<Box>
+				<Center
+					h="100vh"
+					bgImage={"/loginbg.jpg"}
+					bgSize={["cover", "cover", ""]}
+					bgPosition={["center", "center", "top"]}
 				>
-					<form onSubmit={handleLogin}>
-						<VStack spacing={"8"}>
-							<Box>
-								<BsFillPersonFill size={"5rem"} />
-							</Box>
+					<Box
+						border={["none", "solid 1px gray.100"]}
+						borderRadius="1.8rem"
+						p="5"
+						pt="8"
+						pb="8"
+						w={["100vw", "100vw", "600px"]}
+						// bg='cyan.500'
+						opacity={"0.9"}
+						backdropFilter="blur(10px)"
+					>
+						<form onSubmit={handleLogin}>
+							<VStack spacing={"8"}>
+								<Box>
+									<BsFillPersonFill size={"5rem"} />
+								</Box>
 
-							<InputGroup>
-								<InputLeftAddon>Username</InputLeftAddon>
-								<Input
-									type="text"
-									size={"md"}
-									color={"white"}
-									textTransform="lowercase"
-									value={userName}
-									onChange={(e) =>
-										handleChange("user", e.target.value.toLowerCase())
-									}
-								/>
-							</InputGroup>
-							<InputGroup>
-								<InputLeftAddon>Password</InputLeftAddon>
-								<Input
-									type="password"
-									size={"md"}
-									color={"white"}
-									value={password}
-									onChange={(e) => handleChange("password", e.target.value)}
-								/>
-							</InputGroup>
+								<InputGroup>
+									<InputLeftAddon>Username</InputLeftAddon>
+									<Input
+										type="text"
+										size={"md"}
+										color={"white"}
+										textTransform="lowercase"
+										value={userName}
+										onChange={(e) =>
+											handleChange("user", e.target.value.toLowerCase())
+										}
+									/>
+								</InputGroup>
+								<InputGroup>
+									<InputLeftAddon>Password</InputLeftAddon>
+									<Input
+										type="password"
+										size={"md"}
+										color={"white"}
+										value={password}
+										onChange={(e) => handleChange("password", e.target.value)}
+									/>
+								</InputGroup>
 
-							{err && PropmptUser("something is wrong.!")}
-							<Box w="100%">
-								<Button
-									colorScheme={"linkedin"}
-									variant={"solid"}
-									size="md"
-									width="inherit"
-									type="submit"
-									isLoading={loading}
-								>
-									LOGIN
-								</Button>
-							</Box>
-						</VStack>
-					</form>
-					<Center p="2" fontWeight={"bold"} color="white.800">
-						<Text>Not Registered?</Text>
+								{err && PropmptUser("something is wrong.!")}
+								<Box w="100%">
+									<Button
+										colorScheme={"linkedin"}
+										variant={"solid"}
+										size="md"
+										width="inherit"
+										type="submit"
+										isLoading={loading}
+									>
+										LOGIN
+									</Button>
+								</Box>
+							</VStack>
+						</form>
+						<Center p="2" fontWeight={"bold"} color="white.800">
+							<Text>Not Registered?</Text>
 
-						<Link passHref href="/register">
-							<Text cursor={"pointer"}>Register here</Text>
-						</Link>
-					</Center>
-				</Box>
-			</Center>
-		</Box>
+							<Link passHref href="/register">
+								<Text cursor={"pointer"}>Register here</Text>
+							</Link>
+						</Center>
+					</Box>
+				</Center>
+			</Box>
+		</Fragment>
 	);
 }
 
