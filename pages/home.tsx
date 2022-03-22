@@ -21,7 +21,7 @@ import { MdDelete, MdEdit } from "react-icons/md";
 import { Header } from ".";
 import Modals from "./modal";
 import DataContext from "../store/context";
-import { FetchUserData ,RemoveItem} from "../network/networkRequests";
+import { FetchUserData } from "../network/networkRequests";
 
 let transaction = [
 	{ name: "Add Expense", type: "expense" },
@@ -53,11 +53,11 @@ export default function Home() {
 			.catch((err) => console.log(err));
   }, []);
   
-  function handleDelete(id: any) {
+  // function handleDelete(id: any) {
     
-    RemoveItem(id, token)
-    .then(res=>setData({...data,userData:res.data}))
-	}
+  //   RemoveItem(id, token)
+  //   .then(res=>setData({...data,userData:res.data}))
+	// }
 
 
 	return (
