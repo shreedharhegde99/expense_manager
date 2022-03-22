@@ -53,11 +53,13 @@ export default function Home() {
 			.catch((err) => console.log(err));
   }, []);
   
-  // function handleDelete(id: any) {
+  function handleDelete(id: any) {
+    console.log('id');
     
-  //   RemoveItem(id, token)
-  //   .then(res=>setData({...data,userData:res.data}))
-	// }
+    
+    // RemoveItem(id, token)
+    // .then(res=>setData({...data,userData:res.data}))
+	}
 
 
 	return (
